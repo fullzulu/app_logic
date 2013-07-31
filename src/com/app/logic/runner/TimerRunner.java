@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Aliaksandr_Pleski
  */
 public class TimerRunner {
-//    just for test
+//    just for test again
     public static void main(String[] args) throws Exception {
         /*Task task = new Task(new TimerInProps(0, 1, 4), "Task 1");
         new TaskRunner(task, 1);*/
