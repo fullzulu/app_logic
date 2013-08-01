@@ -13,6 +13,8 @@ public class TimerAtProps extends TimerInProps implements TimerProperties {
     private Date date;
 
     private int days;
+    //TODO WEEKS!!!!
+    private int weeks;
 
     public TimerAtProps(Date date) {
         this.date = date;
@@ -34,13 +36,22 @@ public class TimerAtProps extends TimerInProps implements TimerProperties {
         this.days = days;
     }
 
+    public int getWeeks() {
+        return weeks;
+    }
+
+    public void setWeeks(int weeks) {
+        this.weeks = weeks;
+    }
+
     @Override
     public void decrease() {
         long timeDiff = date.getTime() - new Date().getTime();
         sec = (int) (timeDiff / 1000 % 60);
         min = (int) (timeDiff / (60 * 1000) % 60);
         hours = (int) (timeDiff / (60 * 60 * 1000) % 24);
-        days = (int) (timeDiff / (24 * 60 * 60 * 1000));
+        weeks = (int) (timeDiff / (7 * 24 * 60 * 60 * 1000));
+        days = (int) (timeDiff / (24 * 60 * 60 * 1000) - (weeks * 7));
     }
 
     @Override
@@ -50,7 +61,7 @@ public class TimerAtProps extends TimerInProps implements TimerProperties {
 
     @Override
     public String getStatus() {
-        return "Remaining " + getDays() + " days " + getHours() + " hours " +
+        return "Remaining " + getWeeks() + " weeks " + getDays() + " days " + getHours() + " hours " +
                 getMin() + " min " + getSec() + " sec";
     }
 

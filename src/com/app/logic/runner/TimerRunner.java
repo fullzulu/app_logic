@@ -38,7 +38,7 @@ public class TimerRunner {
           */
 
         DateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm:ss");
-        Date date = formatter.parse("07/31/13 19:48:00");
+        Date date = formatter.parse("08/14/13 20:48:00");
 
         Task task = new Task(new TimerAtProps(date), "Task 2");
         new TaskRunner(task, 1).schedule();
