@@ -38,4 +38,8 @@ public class TaskRunner {
             }
         }
     }
+
+    public void stop(){
+        timer.cancel();
+    }
 }

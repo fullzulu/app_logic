@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Aliaksandr_Pleski
  */
 public class TimerRunner {
+//    TODO think of some Manager class on init of the APP
 //    just for test again
     public static void main(String[] args) throws Exception {
         /*Task task = new Task(new TimerInProps(0, 1, 4), "Task 1");
@@ -38,10 +39,17 @@ public class TimerRunner {
           */
 
         DateFormat formatter = new SimpleDateFormat("MM/dd/yy hh:mm:ss");
-        Date date = formatter.parse("08/14/13 20:48:00");
+        Date date = formatter.parse("08/16/13 20:48:00");
 
         Task task = new Task(new TimerAtProps(date), "Task 2");
-        new TaskRunner(task, 1).schedule();
+        TaskRunner runner = new TaskRunner(task, 1);
+        runner.schedule();
+
+        long i = (long) 10000000000.0;
+        while(i > 0){
+            i--;
+        }
+        runner.stop();
 
     }
 }

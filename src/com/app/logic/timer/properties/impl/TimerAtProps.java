@@ -8,6 +8,10 @@ import java.util.Date;
  * @author Aliksandr_Pleski
  */
 public class TimerAtProps extends TimerInProps implements TimerProperties {
+    private static final int SECONDS_IN_MINUTE_MINUTES_IN_HOUR = 60;
+    private static final int MILLIS_IN_SECOND = 1000;
+    private static final int HOURS_IN_DAY = 24;
+    private static final int DAYS_IN_WEEK = 7;
     //TODO think of it please!!! and so .....format of date PM/AM......
     //currently it's not important
     private Date date;
@@ -47,11 +51,11 @@ public class TimerAtProps extends TimerInProps implements TimerProperties {
     @Override
     public void decrease() {
         long timeDiff = date.getTime() - new Date().getTime();
-        sec = (int) (timeDiff / 1000 % 60);
-        min = (int) (timeDiff / (60 * 1000) % 60);
-        hours = (int) (timeDiff / (60 * 60 * 1000) % 24);
-        weeks = (int) (timeDiff / (7 * 24 * 60 * 60 * 1000));
-        days = (int) (timeDiff / (24 * 60 * 60 * 1000) - (weeks * 7));
+        sec = (int) (timeDiff / MILLIS_IN_SECOND % SECONDS_IN_MINUTE_MINUTES_IN_HOUR);
+        min = (int) (timeDiff / (SECONDS_IN_MINUTE_MINUTES_IN_HOUR * MILLIS_IN_SECOND) % SECONDS_IN_MINUTE_MINUTES_IN_HOUR);
+        hours = (int) (timeDiff / (SECONDS_IN_MINUTE_MINUTES_IN_HOUR * SECONDS_IN_MINUTE_MINUTES_IN_HOUR * MILLIS_IN_SECOND) % HOURS_IN_DAY);
+        weeks = (int) (timeDiff / (DAYS_IN_WEEK * HOURS_IN_DAY * SECONDS_IN_MINUTE_MINUTES_IN_HOUR * SECONDS_IN_MINUTE_MINUTES_IN_HOUR * MILLIS_IN_SECOND));
+        days = (int) (timeDiff / (HOURS_IN_DAY * SECONDS_IN_MINUTE_MINUTES_IN_HOUR * SECONDS_IN_MINUTE_MINUTES_IN_HOUR * MILLIS_IN_SECOND) - (weeks * DAYS_IN_WEEK));
     }
 
     @Override
