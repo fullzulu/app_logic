@@ -30,11 +30,13 @@ public class TaskRunner {
         public void run() {
             TimerProperties taskProps = task.getProps();
             taskProps.decrease();
-            System.out.println("Execute " + task.getObjective() +
+            System.out.println("Execute " + task.getObjective().getDescription() +
                     ". " + taskProps.getStatus());
             if(taskProps.isCompleted()){
                 timer.cancel();
                 System.out.println("Executing....");
+                task.getObjective().toDo();
+                System.out.println("Executed....\nThe objective status is " + (task.getObjective().isDone()? "DONE": "FAILED"));
             }
         }
     }

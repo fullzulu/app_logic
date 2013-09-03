@@ -1,5 +1,6 @@
 package com.app.logic.beans;
 
+import com.app.logic.beans.objectives.Objective;
 import com.app.logic.timer.properties.TimerProperties;
 
 /**
@@ -10,9 +11,9 @@ public class Task {
     /*
      * TODO will be replaced
      */
-    private String objective;
+    private Objective objective;
 
-    public Task(TimerProperties props, String objective) {
+    public Task(TimerProperties props, Objective objective) {
         this.props = props;
         this.objective = objective;
     }
@@ -25,11 +26,11 @@ public class Task {
         this.props = props;
     }
 
-    public String getObjective() {
+    public Objective getObjective() {
         return objective;
     }
 
-    public void setObjective(String objective) {
+    public void setObjective(Objective objective) {
         this.objective = objective;
     }
 
